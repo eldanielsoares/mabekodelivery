@@ -1,0 +1,28 @@
+<mat-toolbar class="tb mat-elevation-z4">
+    <button mat-icon-button (click)="goToBack()"><mat-icon color="primary">keyboard_backspace</mat-icon></button>
+    <img src="assets/icon.png" alt="" class="logo">
+</mat-toolbar>
+
+<div class="container">
+    <div class="container" *ngIf="!loading; else load">
+        <article style="margin-top: 20px;margin-bottom: 20px;color: #ff5722; font-size: 1em; text-align: center;font-weight: bold;">Quais Suas formas de pagamento?</article>
+
+    <form [formGroup]="formasPgt" style="margin-top: 20px;">
+        <mat-form-field appearance="fill">
+            <mat-label>Formas de pagamento</mat-label>
+            <mat-select multiple formControlName="pgt">
+                <mat-option *ngFor="let p of pagamento" [value]="p">
+                    {{p}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button (click)="save()" style="width: 200px; color: #fff;" color="primary" >Salvar</button>
+
+    </div>
+
+    <ng-template #load>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+</div>

@@ -1,0 +1,750 @@
+.header{
+    width: 100%;
+    background: url(/assets/banner.jpg);
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+
+.logo{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo img{
+    width: 150px;
+}
+
+.conteinerInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.contentTxt{
+    width: 100%;
+    margin-top:10px;
+}
+
+.contentTxt h1{
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0 10% 0 10%;
+}
+
+.contentTxt article {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.3em;
+    text-align: center;
+    margin: 0 10% 0 10%;
+}
+
+.contentWeb img {
+    width: 0;
+}
+
+.contentVideo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentVideo iframe{
+    width: 80%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.contentVideo button{
+  color: #fff;
+  background-color: #3a539b;    
+  margin-top: 10px;
+}
+
+.contentVantagens{
+    width: 100%;
+    background-color: #de492f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.imgPerson img {
+ width: 0;
+}
+
+.contentTextInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentTextInfo > article:first-of-type{
+   color: white;
+   text-transform: uppercase;
+   font-weight: 200;
+   text-align: center;
+}
+
+.contentTextInfo p {
+    color: white;
+    font-weight: 400;
+    margin: 5px 8% 0 8%;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.contentTextInfo > article:last-of-type{
+    color: white;
+    font-weight: 200;
+    margin: 15px 6% 0 6%;
+    text-align: center;
+ }
+
+ .contentTextInfo button{
+    color: #fff;
+    background-color: #3a539b;    
+    margin-top: 10px;
+  }
+
+  .vantagensTopic{
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 5%;
+      padding-top: 50px;
+  }
+
+  .vantagensTopic h1 {
+      width: 100%;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 500;
+      
+  }
+
+  .vant1{
+      width: 100%;
+      background: url(/assets/bg-1.png) no-repeat;
+       background-size: 200px;
+      margin-top: 10px;
+
+  }
+
+  .vant2{
+    width: 100%;
+    background: url(/assets/bg-2.png) no-repeat;
+    background-size: 200px;
+    margin-top: 10px;
+
+}
+
+.vant3{
+    width: 100%;
+    background: url(/assets/bg-3.png) no-repeat;
+    background-size: 200px;
+    margin-top: 10px;
+
+}
+
+.vanttxt{
+    text-align: center;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin: 5px 20% 0 20%;
+}
+
+.vantMsg {
+    font-size: 1.5em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.target{
+    width: 100%;
+    background-color: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+    
+}
+
+.target button {
+    color: #fff;
+    background-color: #f62459;
+    margin-top: 5px;
+}
+
+.contentTarget{
+    width: 80%;
+    background-color: white;
+    border: 2px solid blue;
+    border-radius: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom:10px;
+}
+
+.personTarget{
+    width:150px;
+    height: 150px;
+    background-color: aqua;
+    margin-top: 5%;
+    border-radius: 50%;
+}
+
+.personTarget img {
+    width:150px;
+    height:150px;
+    object-fit: cover;
+}
+
+.contentTarget h1{
+    text-align: center;
+    font-weight:500;
+     
+}
+
+.contentTarget p{
+    text-align: center;
+}
+
+.contentTarget article {
+    text-align: center;
+}
+
+.comoUsar{
+    width: 100%;
+    background-color: #de492f;
+    padding-bottom: 15px;
+}
+
+.comoUsar div h1{
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 2% 0 2%;
+}
+
+.como1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.como1 img {
+    width: 150px;
+}
+
+.como1  p {
+  font-weight: 500;
+  text-transform: uppercase;
+  color: black;
+}
+
+.como1 h1 {
+    font: 1.5rem;
+    color: White;
+    font-weight: 600;
+}
+
+.como1 article{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+
+.como2{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.como2 img {
+    width: 150px;
+}
+
+.como2  p {
+  font-weight: 500;
+  text-transform: uppercase;
+  color: black;
+}
+
+.como2 h1 {
+    font: 1.5rem;
+    color: White;
+    font-weight: 600;
+}
+
+.como2 article{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+
+.como3{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.como3 img {
+    width: 150px;
+}
+
+.como3  p {
+  font-weight: 500;
+  text-transform: uppercase;
+  color: black;
+}
+
+.como3 h1 {
+    font: 1.5rem;
+    color: White;
+    font-weight: 600;
+}
+
+.como3 article{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+}
+
+.comoUsar button {
+    color: white;
+    background-color: #5f20b4;
+    margin-top: 10px;
+}
+
+.separarTxt{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer{
+    width: 100%;
+    padding-bottom: 20px;
+    background-color: #202837;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer img {
+    width: 150px;
+    margin-top: 10px;
+}
+
+@media screen and (min-width: 768px){
+    .header{
+        width: 100%;
+        background: url(/assets/banner.jpg);
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+    
+    .conteinerInfo{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .contentTxt{
+        width: 70%;
+        height: 300px;
+        margin-top:10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contentTxt h1{
+        font-size: 2em;
+        margin: 20px 10% 0 10%;
+    }
+
+    .contentTxt article {
+        font-size: 1.7em;
+        margin: 20px 10% 0 10%;
+    }
+
+    
+    .contentVideo{
+        width: 100%;
+    }
+
+    .contentVideo iframe{
+        width: 60%;
+        height: 250px;
+    }
+
+    .contentVantagens{
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 0;
+
+    }
+
+    .imgPerson{
+        width: 30%;
+
+    }
+
+    .imgPerson img {
+        width: 150px;
+        object-fit: cover;
+        float: right;
+    }
+
+    .contentTextInfo > article:first-of-type{
+        color: white;
+        text-transform: uppercase;
+        font-weight: 200;
+        text-align: center;
+        font-size: 1.4em;
+        line-height: 1;
+     }
+     
+     .contentTextInfo p {
+         color: white;
+         font-weight: 400;
+         margin: 5px 8% 0 8%;
+         text-align: center;
+         font-size: 1.6em;
+         line-height: 1;
+     }
+     
+     .contentTextInfo > article:last-of-type{
+         color: white;
+         font-weight: 200;
+         margin: 15px 6% 0 6%;
+         text-align: center;
+         font-size: 1.4em;
+         line-height: 1;
+      }
+
+    .vantagensTopic{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+
+    .vant1{
+        width: 30%;
+        height: 150px;
+        background: url(/assets/bg-1.png) no-repeat;
+         background-size: 200px;
+        margin-top: 10px;
+  
+    }
+  
+    .vant2{
+      width: 30%;
+      height: 150px;
+      background: url(/assets/bg-2.png) no-repeat;
+      background-size: 200px;
+      margin-top: 10px;
+  
+  }
+  
+  .vant3{
+      width: 30%;
+      height: 150px;
+      background: url(/assets/bg-3.png) no-repeat;
+      background-size: 200px;
+      margin-top: 10px;
+  
+  }
+
+  .vanttxt{
+    text-align: center;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 5px 2% 0 2%;
+}
+
+.vantMsg {
+    font-size: 1.5em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.target{
+    width: 100%;
+    background-color: #e8e8e8;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content:center;
+    flex-wrap: wrap;
+    
+}
+
+.target button {
+    color: #fff;
+    background-color: #f62459;
+    margin-top: 5px;
+}
+
+.contentTarget{
+    width: 40%;
+    height: 400px;
+    background-color: white;
+    border: 2px solid blue;
+    border-radius: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom:10px;
+}
+
+.contentTarget article{
+    margin: 0 2% 0 2%;
+}
+
+.personTarget{
+    width:150px;
+    height: 150px;
+    background-color: aqua;
+    margin-top: 5%;
+    border-radius: 50%;
+}
+
+.comoUsar{
+    width: 100%;
+    background-color: #de492f;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comoUsar div h1{
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 2% 0 2%;
+}
+
+.como1{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+
+}
+
+.como1 Img{
+    width: 200px;
+}
+
+.como2{
+    width: 70%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.como2 img {
+    width: 200px;
+}
+
+.como3{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+
+}
+
+.como3 Img{
+    width: 200px;
+}
+
+
+
+}
+
+@media screen and (min-width:1024px){
+    
+    .contentVideo iframe{
+        width: 50%;
+        height: 300px;
+    }
+
+    
+
+    .contentTextInfo{
+        width: 70%;
+        padding-bottom: 10px;
+    }
+
+    
+    .contentTarget p{
+        text-align: center;
+        font-size:1.2em;
+    }
+    
+    .contentTarget article {
+        text-align: center;
+        font-size:1.4em;
+    }
+
+.comoUsar{
+    width: 100%;
+    background-color: #de492f;
+    padding-bottom: 15px;
+}
+
+.comoUsar div h1{
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 2% 0 2%;
+}
+
+.como1{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.como1 Img{
+    width: 200px;
+}
+
+.como1 article{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.como2{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.como2 img {
+    width: 200px;
+}
+
+
+
+.como2 article{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+.como3{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.como3 Img{
+    width: 200px;
+}
+
+
+.como3 article{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+}
+
+@media screen and (min-width:1280px){
+    .como1{
+        width: 45%;
+    }
+
+    .como2{
+        width: 45%;
+    }
+
+    .como3{
+        width: 45%;
+    }
+}
+
+
+
+@media screen and (min-width:1440px){
+    .como1{
+        width: 40%;
+    }
+
+    .como2{
+        width: 40%;
+    }
+
+    .como3{
+        width: 40%;
+    }
+}
+
+@media screen and (min-width:2560px){
+    .como1{
+        width: 25%;
+    }
+
+    .como2{
+        width: 25%;
+    }
+
+    .como3{
+        width: 25%;
+    }
+}
+

@@ -1,0 +1,19 @@
+<div class="conteiner">
+    <img src="assets/icon.png" alt="" class="logo">
+
+    <img src="assets/pass.svg" alt="" class="img">
+
+    <p class="txt" *ngIf="!loading">Se você esqueceu sua senha, não se preocupe, é muito fácil de recuperar.
+        <br>Digite seu e-mail cadastrado na Mabeko e altere sua senha.
+    </p>
+    <form [formGroup]="reset" style="display: flex;flex-direction: column;" (ngSubmit)="HandleReset()" *ngIf="!loading; else load">
+        <mat-form-field appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" placeholder="email" required type="email">
+        </mat-form-field>
+        <button mat-raised-button color="primary" style="color: #fff" type="submit">Enviar e-mail</button>
+    </form>
+    <ng-template #load>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+</div>

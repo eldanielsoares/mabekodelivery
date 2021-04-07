@@ -1,0 +1,57 @@
+<div class="conteiner">
+    <img src="assets/icon.png" alt="Logo da Mabeko" class="logo">
+    <article style="font-size: 1.5em; color: #ff5722; margin-top: 15px; font-weight: bold;">Atualizar Perfil</article>
+    <div class="box">
+        <form [formGroup]="profile" class="form" (ngSubmit)="handleProfile()" *ngIf="!loading; else load">
+            <mat-form-field appearance="fill" class="inp">
+                <mat-label>Nome da Empresa</mat-label>
+                <input matInput type="text" placeholder="Nome empresa" formControlName="nome" required autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inp">
+                <mat-label>Whatsapp com DDD</mat-label>
+                <input matInput required maxlength="11" type="number" placeholder="Whatsapp com DDD" formControlName="whatsapp" required autocomplete="off">
+            </mat-form-field>
+
+            <!--<mat-form-field appearance="fill" class="address">
+                <mat-label>Cep</mat-label>
+                <input matInput formControlName="cep" placeholder="CEP" type="number" max="8" a required>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Rua</mat-label>
+                <input matInput formControlName="rua" placeholder="Rua" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Bairro</mat-label>
+                <input matInput formControlName="bairro" placeholder="Bairro" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Cidade</mat-label>
+                <input matInput formControlName="cidade" placeholder="Cidade" autocomplete="off" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Estado</mat-label>
+                <input matInput formControlName="estado" placeholder="Estado" autocomplete="off" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Número</mat-label>
+                <input matInput formControlName="numero" placeholder="Número" type="number" autocomplete="off" required>
+            </mat-form-field>-->
+            <mat-form-field style="width: 100%;" appearance="fill">
+                <mat-label>Endereço</mat-label>
+                <input matInput  matGoogleMapsAutocomplete country="br" 
+                    (onAutocompleteSelected)="onAutocompleteSelected($event)" formControlName="endereco" [value]="userInfo?.endereco">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" class="btn" [disabled]="!profile.valid" type="submit">Salvar</button>
+        </form>
+        <button mat-button (click)="goToBack()" style="color: #ff5722; margin-top: 5px;">Voltar</button>
+
+        <ng-template #load>
+            <mat-spinner></mat-spinner>
+        </ng-template>
+    </div>
+
+</div>

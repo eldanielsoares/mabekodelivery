@@ -1,0 +1,25 @@
+<div class="conteiner">
+    <img src="assets/icon.png" alt="Logo da Mabeko" class="logo">
+    <article style="font-size: 1.5em; color: #ff5722; margin-top: 15px; font-weight: bold;">Login</article>
+    <div class="box">
+       <form [formGroup]="login" style="display:flex; flex-direction: column; align-items: center;"  class="form" (ngSubmit)="handleLogin()" *ngIf="!loading; else load">
+           <mat-form-field appearance="fill" class="inp">
+               <mat-label>E-mail</mat-label>
+               <input matInput type="email" required placeholder="E-mail" formControlName="email">
+           </mat-form-field>
+
+           <mat-form-field appearance="fill" class="inp">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" required minlength="6" placeholder="Senha" formControlName="senha">
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="btn" [disabled]="!login.valid" type="submit">Entrar</button>
+       </form>
+
+       <ng-template #load>
+           <mat-spinner></mat-spinner>
+       </ng-template>
+    </div>
+        <button mat-button style="color:#ff5722; font-weight: bold;cursor: pointer;" routerLink="/register" *ngIf="!loading">Criar conta</button>
+
+        <button mat-button style="color:#ff5722; font-weight: bold;cursor: pointer; margin-top: 15px;" routerLink="/resetpassword" *ngIf="!loading">Esqueci minha senha</button>
+</div>

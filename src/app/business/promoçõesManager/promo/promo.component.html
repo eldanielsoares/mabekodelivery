@@ -1,0 +1,41 @@
+<mat-toolbar class="tb mat-elevation-z4">
+    <button mat-icon-button (click)="goToBack()">
+        <mat-icon color="primary">keyboard_backspace</mat-icon>
+    </button>
+    <img src="assets/icon.png" alt="" class="logo">
+</mat-toolbar>
+
+<div class="container">
+    <div class="container" *ngIf="!loading; else load">
+        <p style="margin-top: 15px; color: #ff5722; font-weight: bold;text-align: center; font-size: 1em;">Crie suas
+            promoções</p>
+        <div class="box">
+            <form [formGroup]="promo" (ngSubmit)="handlePromo()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nome cupom</mat-label>
+                    <input matInput required placeholder="Nome cupom" style='text-transform:uppercase'  autocomplete="off"
+                        formControlName="nome">
+                </mat-form-field>
+    
+                <mat-radio-group formControlName="status">
+                    <mat-radio-button value="true" style="margin:5px">Ativar</mat-radio-button>
+                    <mat-radio-button value="false" style="margin:5px">Desativar</mat-radio-button>
+                </mat-radio-group>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Desconto em %</mat-label>
+                    <input matInput required autocomplete="off" type="number" placeholder="Desconto em %"
+                        formControlName="desconto">
+                </mat-form-field>
+    
+                <button mat-raised-button color="primary" style="color: #fff; width: 200px;" type="submit"
+                    [disabled]="!promo.valid">Salvar</button>
+            </form>
+        </div>
+    </div>
+    <ng-template #load>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+</div>
+
+<!---->

@@ -1,0 +1,35 @@
+<mat-toolbar class="tb mat-elevation-z4">
+    <button mat-icon-button (click)="goToBack()">
+        <mat-icon color="primary">keyboard_backspace</mat-icon>
+    </button>
+    <img src="assets/icon.png" alt="" class="logo">
+</mat-toolbar>
+
+<div class="conteiner">
+
+    <div class="container">
+        <div class="box">
+            <form [formGroup]="add" style="display: flex; flex-direction: column; align-items: center;" (ngSubmit)="saveAdd()">
+                <mat-form-field appearance="fill">
+                    <mat-label>Categoria</mat-label>
+                    <mat-select formControlName="categoria" required>
+                      <mat-option *ngFor="let c of user?.categorias" [value]="c">
+                        {{c}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                      <mat-label>Nome do adicional</mat-label>
+                      <input matInput formControlName="nome" required autocomplete="off" placeholder="Nome do Cupom">
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nome do adicional</mat-label>
+                    <input matInput formControlName="preco" required autocomplete="off" type="number" placeholder="Nome do Cupom">
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit" [disabled]="!add.valid">Salvar adicional</button>
+            </form>
+        </div>
+    </div>

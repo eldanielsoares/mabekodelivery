@@ -1,0 +1,82 @@
+<mat-toolbar class="tb mat-elevation-z4" *ngFor="let p of user$|async">
+    <span class="txtEstabelecimento">{{p.nome}}</span>
+    <span class="space"></span>
+    <button mat-icon-button class="spacer" (click)="goToCart(p)">
+        <mat-icon [matBadge]="size" matBadgeColor="warn" style="color: #ff5722;" *ngIf="size > 0; else empty">
+            shopping_cart</mat-icon>
+        <ng-template #empty>
+            <mat-icon style="color: #ff5722;">shopping_cart</mat-icon>
+        </ng-template>
+    </button>
+</mat-toolbar>
+
+<div class="conteiner">
+
+    <div *ngFor="let h of user$|async"
+        style="width: 200px; height: 25px;border-radius: 5px; background-color: royalblue;display:flex; flex-direction: column;justify-content:center; align-items:center; color:#fff">
+        <ng-container *ngIf="h.autorizado">
+            <article *ngIf="h.expediente?.indexOf(dates) != -1; else fechado">Aberto entre {{h.horario}}</article>
+            <ng-template #fechado>
+                <article>Fechado Hoje</article>
+            </ng-template>
+        </ng-container>
+    </div>
+
+    <div *ngFor="let category of user$|async">
+        <ng-container *ngIf="category.autorizado">
+            <mat-form-field appearance="fill">
+                <mat-label>Categoria</mat-label>
+                <mat-select [(ngModel)]="mSelected" (selectionChange)="categoria($event)">
+                    <mat-option value=''>Todos</mat-option>
+                    <mat-option *ngFor="let c of category.categorias" [value]="c">
+                        {{c}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </ng-container>
+    </div>
+
+    <div class="box" *ngFor="let h of user$|async">
+        <ng-container *ngIf="h.autorizado; else noAutorization">
+            <mat-card class="card mat-elevation-z3" *ngFor="let p of prod$|async; let i=index">
+                <div class="containercard1">
+                    <img src="{{p.urlProduto}}" class="ImgBack" *ngIf="p.urlProduto; else noImg">
+                    <ng-template #noImg>
+                        <img src="assets/ic_food.png" class="ImgBack">
+                    </ng-template>
+                </div>
+
+                <div class="containercard2">
+                    <article class="txtNome">{{p.nome}}</article>
+                    <article class="txtDesc">{{p.ingredientes}}</article>
+                </div>
+
+                <div class="containercard3">
+                    <div class="containerPreco">
+                        <article class="txtPreco">{{p.preco | currency: 'R$'}}</article>
+                    </div>
+
+                    <div class="containerBtn">
+                        <button mat-icon-button *ngIf="!idAdicionado!.includes(p.docId!); else remove"
+                        (click)="addRemove(p, i)" [disabled]="h.expediente?.indexOf(dates) == -1">
+                        <mat-icon style="color: #ff5722;">add_circle</mat-icon>
+                    </button>
+                    <ng-template #remove>
+                        <button mat-icon-button class="spacer" (click)="addRemove(p, i)">
+                            <mat-icon style="color: #ff5722;">remove_circle</mat-icon>
+                        </button>
+                    </ng-template>
+                    </div>
+                </div>
+            </mat-card>
+            
+        </ng-container>
+        <ng-template #noAutorization>
+            <img src="assets/autorizado1.svg" style="width: 200px; margin-top: 5px;">
+            <h1 style="margin-top: 5px; color: #ff5722; font-weight: bold;">
+                Este estabelecimento deixou de usar o nosso serviço, mas se você está aqui é porque gostou, entre em contato com eles e mostre 
+                somos melhores juntos.
+            </h1>
+        </ng-template>
+    </div>
+</div>

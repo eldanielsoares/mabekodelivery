@@ -1,0 +1,33 @@
+.tb{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position:fixed;
+    top:0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo{
+    width: 100px;
+}
+
+.container{
+    width:100%;
+    padding-top: 62px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.float_btn{
+    display:flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 30px;
+    right:10px;
+    z-index: 1000;
+
+}

@@ -1,0 +1,15 @@
+.content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img {
+    width: 150px;
+    margin-top: 10px;
+}
+
+article {
+    margin-left: 10px;
+    margin-right: 10px;
+}

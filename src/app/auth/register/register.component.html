@@ -1,0 +1,87 @@
+<div class="conteiner">
+    <img src="assets/icon.png" alt="Logo da Mabeko" class="logo">
+    <article style="font-size: 1.5em; color: #ff5722; margin-top: 15px; font-weight: bold;">Criar conta</article>
+    <div class="box">
+        <form [formGroup]="register" class="form" (ngSubmit)="handleRegister()" *ngIf="!loading; else load">
+            <mat-form-field appearance="fill" class="inp">
+                <mat-label>Nome da Empresa</mat-label>
+                <input matInput type="text" placeholder="Nome empresa" formControlName="nome" required
+                    autocomplete="off">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inp">
+                <mat-label>Whatsapp com DDD</mat-label>
+                <input matInput required maxlength="11" type="number" placeholder="Whatsapp com DDD"
+                    formControlName="whatsapp" required autocomplete="off">
+            </mat-form-field>
+
+
+            <div class="plain">
+                <article style="text-align: center; margin-bottom: 2px; color: #ff5722; font-weight: 500;">Você deseja
+                    aceitar seus
+                    pedidos SOMENTE por:</article>
+                <mat-radio-group class="radio" formControlName="plano">
+                    <mat-radio-button value="true" style="margin: 4px;">Whatsapp</mat-radio-button>
+                    <mat-radio-button value="false" style="margin: 4px;">site</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+
+            <!--<mat-form-field appearance="fill" class="address">
+                <mat-label>Cep</mat-label>
+                <input matInput formControlName="cep" placeholder="CEP" type="number" max="8" a required>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Rua</mat-label>
+                <input matInput formControlName="rua" placeholder="Rua" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Bairro</mat-label>
+                <input matInput formControlName="bairro" placeholder="Bairro" autocomplete="off" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Cidade</mat-label>
+                <input matInput formControlName="cidade" placeholder="Cidade" autocomplete="off" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="estado" required>
+                    <mat-option *ngFor="let e of estados" [value]="e">
+                        {{e}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="address">
+                <mat-label>Número</mat-label>
+                <input matInput formControlName="numero" placeholder="Número" type="number" autocomplete="off" required>
+            </mat-form-field>-->
+
+            <mat-form-field style="width: 100%;" appearance="fill">
+                <mat-label>Endereço</mat-label>
+                <input matInput  matGoogleMapsAutocomplete country="br"
+                    (onAutocompleteSelected)="onAutocompleteSelected($event)">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill" class="inp">
+                <mat-label>E-mail</mat-label>
+                <input matInput type="email" required placeholder="E-mail" formControlName="email" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="inp">
+                <mat-label>Criar senha</mat-label>
+                <input matInput type="password" required minlength="6" placeholder="Criar senha" formControlName="senha"
+                    required>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="btn" [disabled]="!register.valid" type="submit">Criar
+                Conta</button>
+        </form>
+
+        <ng-template #load>
+            <mat-spinner></mat-spinner>
+        </ng-template>
+    </div>
+
+</div>

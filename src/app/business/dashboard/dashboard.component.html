@@ -1,0 +1,137 @@
+<mat-toolbar class="tb mat-elevation-z4">
+    <img src="assets/icon.png" alt="" class="logo">
+</mat-toolbar>
+<div *ngFor="let f of user$ | async">
+    <div class="conteiner" *ngIf="f.autorizado; else wait">
+        <div class="copy">
+            <mat-form-field appearance="fill" *ngFor="let f of user$ | async" style="margin-top:5px">
+                <input matInput value="https://mabekodelivery.web.app/m/{{f.nomeUrl}}" #myInput disabled *ngIf="f.receberPorWhatsapp; else premium">
+               <ng-template #premium>
+                <input matInput value="https://mabekodelivery.web.app/d/{{f.nomeUrl}}" #myInput disabled>
+               </ng-template>
+            </mat-form-field>
+            <button (click)="copy()" mat-icon-button>
+                <mat-icon style="color:#ff5722;">content_copy</mat-icon>
+            </button>
+        </div>
+        <div class="box">
+            <div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="goToCardapio(f)">
+                    <article>Cardápio</article>
+                    <mat-icon>restaurant_menu</mat-icon>
+                </mat-card>
+            </div>
+
+            <div class="card-box" *ngIf="!f.receberPorWhatsapp">
+                <mat-card class="card mat-elevation-z4" (click)="goToPedidos()">
+                    <article>Meus Pedidos</article>
+                    <mat-icon>storefront</mat-icon>
+                </mat-card>
+            </div>
+
+            <!--<div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="goToAdicionais(f)">
+                    <article>Adicionais</article>
+                    <mat-icon>add_box</mat-icon>
+                </mat-card>
+            </div>-->
+
+            <div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="goToProfile(f)">
+                    <article>Perfil</article>
+                    <mat-icon>person</mat-icon>
+                </mat-card>
+            </div>
+
+            <div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="goToCategoria(f)">
+                    <article>Categorias</article>
+                    <mat-icon>category</mat-icon>
+                </mat-card>
+            </div>
+
+            <div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="goToEntrega(f)">
+                    <article>Taxa de entrega</article>
+                    <mat-icon>electric_moped</mat-icon>
+                </mat-card>
+            </div>
+
+            <div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="goToExpediente(f)">
+                    <article>Expediente</article>
+                    <mat-icon>event_note</mat-icon>
+                </mat-card>
+            </div>
+
+            <div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="goToPromo(f)">
+                    <article>Promoções</article>
+                    <mat-icon>local_fire_department</mat-icon>
+                </mat-card>
+            </div>
+
+            <div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="goToPgt(f)">
+                    <article>Formas de Pagamento</article>
+                    <mat-icon>request_page</mat-icon>
+                </mat-card>
+            </div>
+
+            <div class="card-box">
+                <a href="https://youtu.be/YpsWPzO2EKk" target="_blank" style="text-decoration: none;">
+                    <mat-card class="card mat-elevation-z4">
+                        <article>Passo a passo</article>
+                        <mat-icon>slideshow</mat-icon>
+                    </mat-card>
+                </a>
+            </div>
+
+            <!--<div class="card-box" *ngIf="!f.receberPorWhatsapp">
+                    <mat-card class="card mat-elevation-z4" (click)="goToPrint()">
+                        <article>Config. Impressão</article>
+                        <mat-icon>print</mat-icon>
+                    </mat-card>
+            </div>-->
+
+            <div class="card-box">
+                <mat-card class="card mat-elevation-z4" (click)="signOut()">
+                    <article>Sair</article>
+                    <mat-icon>login</mat-icon>
+                </mat-card>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <ng-template #wait>
+        <div class="waitContainer">
+            <article style="text-align:center; font-size: 1.5em; font-weight: bold; margin-top: 2%; color: #ff5722;">
+                Olá, {{f.nome}}, Parece que você ainda não tem autorização para utilizar esta área.
+                <br><br>Aguarde um pouquinho ou entre em contato para ativação imediata.
+            </article>
+            <div class="videoClass">
+                <article>Enquanto aguarda autorização, veja o vídeo abaixo e aprenda como ter a melhor experiência.
+                </article>
+                <div class="videoContainer">
+                    <iframe src="https://www.youtube.com/embed/YpsWPzO2EKk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <a
+                href="https://api.whatsapp.com/send?phone=5598985223703&text=Ol%C3%A1%2C%20estou%20esperando%20minha%20ativa%C3%A7%C3%A3o%20da%20Mabeko">
+                <button mat-raised-button
+                    style="color: #fff; width:200px; background-color: green; margin-top: 15px;text-decoration: none;">Fale
+                    conosco</button>
+            </a>
+        </div>
+    </ng-template>
+
+    <!--  <p *ngIf="f.expediente?.indexOf(dates) != -1; else fechado">Aberto</p>
+    <ng-template #fechado>
+        <p>Fechado</p>
+    </ng-template>-->
+
+</div>

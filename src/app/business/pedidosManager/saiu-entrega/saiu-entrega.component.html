@@ -1,0 +1,44 @@
+<div class="conteiner">
+    <mat-accordion class="card" *ngFor="let p of saiu$|async">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{p.nomeCliente}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{p.preco | currency : 'R$'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>{{p.timestamp | date: 'HH:mm - dd/MM/yyyy'}}</p>
+            <p *ngFor="let pedido of p.pedido"><b>{{pedido}}</b></p>
+            <h4>Observação: <b>{{p.observacao}}</b></h4>
+            <h4 *ngIf="p.status == 1">Status: <b style="color:red; font-weight: bold;">Aguardando resposta</b></h4>
+            <h4 *ngIf="p.status == 2">Status: <b style="color:#f7ca18; font-weight: bold;">Em preparo</b></h4>
+            <h4 *ngIf="p.status == 3 && p.delivery" >Status: <b style="color:cornflowerblue; font-weight: bold;">Saiu para entrega</b>
+            </h4>
+            <h4 *ngIf="p.status == 3 && !p.delivery" >Status: <b style="color:cornflowerblue; font-weight: bold;">Aguardando retirada</b>
+            </h4>
+            <h4 *ngIf="p.status == 4">Status: <b style="color:green; font-weight: bold;">Entregue</b></h4>
+            <h4 *ngIf="p.desconto">Desconto: <b style="color: green;">{{p.desconto | currency: 'R$'}}</b></h4>
+            <h4 *ngIf="p.delivery">Endereço de entrega: <b>{{p.endereco}}</b></h4>
+            <h4 *ngIf="!p.delivery">Retirada em: <b>{{p.endereco}}</b></h4>
+            <h4>Forma de pagamento: <b>{{p.formaPagamento}}</b></h4>
+            <h4>Taxa de entrega: <b>{{p.entregaTaxa | currency : 'R$'}}</b></h4>
+            <h4 *ngIf="p.troco">Troco: <b>{{p.troco | currency: 'R$'}}</b></h4>
+            <div class="actions">
+                <div class="resposta">
+                    <button mat-raised-button style="color:white; background: green; margin: 5px;" (click)="handleAceitar(p)">
+                        Finalizar entrega</button>
+                </div>
+                <div class="icons">
+                    <button mat-icon-button>
+                        <mat-icon style="color:orangered" (click)="print(p)">print</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="enviarMsg(p)">
+                        <mat-icon style="color:orangered">message</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

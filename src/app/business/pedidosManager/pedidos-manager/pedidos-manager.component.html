@@ -1,0 +1,27 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Pendente">
+      <ng-template matTabContent>
+        <app-pendente></app-pendente>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Local">
+      <ng-template matTabContent>
+        <app-local-atendimento></app-local-atendimento>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Andamento">
+      <ng-template matTabContent>
+        <app-andamento></app-andamento>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Entrega">
+      <ng-template matTabContent>
+        <app-saiu-entrega></app-saiu-entrega>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Finalizado">
+      <ng-template matTabContent>
+        <app-finalizado></app-finalizado>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>

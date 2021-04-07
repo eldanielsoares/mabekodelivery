@@ -1,0 +1,148 @@
+.tb {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 100px;
+}
+
+.conteiner {
+    width: 100%;
+    height: auto;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.copy {
+    width: 100%;
+    height: 60px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+
+.card-box {
+    width: 30%;
+    height: 80px;
+    margin: 5px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    color: #ff5722;
+}
+
+/* Sem autorização area*/
+
+.waitContainer {
+    width: 100%;
+    min-height: 100%;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+
+}
+
+.imgMessage{
+    width: 200px;
+    margin-top: 15px;
+}
+
+.videoClass{
+    width: 100%;
+    color:#ff5722;
+    font-weight: bold;
+    font-size:1em;
+    text-align:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.videoContainer{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.videoContainer iframe{
+    width: 100%;
+    height: 250px;
+}
+
+@media screen and (min-width:768px) {
+    .box {
+        width: 70%;
+        margin-top: 15px;
+    }
+
+    .imgMessage{
+        width: 300px;
+        margin-top: 15px;
+    }
+
+    .videoContainer{
+        width:50%;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .box {
+        width: 50%;
+    }
+    .imgMessage{
+        width: 400px;
+        margin-top: 15px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .box {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width:25600px) {
+    .box {
+        width: 30%;
+    }
+
+    .videoContainer{
+        width:40%;
+    }
+}
