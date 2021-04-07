@@ -30,7 +30,7 @@
     "ng2-img-max": "^2.2.4",
     "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-material-timepicker": "^5.5.3",
-    "rxjs": "~6.6.0",
+    "rxjs": "~6.6.7",
     "tslib": "^2.0.0",
     "uuid": "^8.3.2",
     "zone.js": "~0.10.2"
