@@ -11,7 +11,7 @@
             promoções</p>
         <div class="box">
             <form [formGroup]="promo" (ngSubmit)="handlePromo()">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="outline">
                     <mat-label>Nome cupom</mat-label>
                     <input matInput required placeholder="Nome cupom" style='text-transform:uppercase'  autocomplete="off"
                         formControlName="nome">
@@ -22,7 +22,7 @@
                     <mat-radio-button value="false" style="margin:5px">Desativar</mat-radio-button>
                 </mat-radio-group>
     
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="outline">
                     <mat-label>Desconto em %</mat-label>
                     <input matInput required autocomplete="off" type="number" placeholder="Desconto em %"
                         formControlName="desconto">

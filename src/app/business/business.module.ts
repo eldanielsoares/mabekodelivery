@@ -26,13 +26,16 @@ import { PrintConfigComponent } from './print/print-config/print-config.componen
 import { LocalAtendimentoComponent } from './pedidosManager/local-atendimento/local-atendimento.component';
 import { LocalShopComponent } from './pedidosManager/local-shop/local-shop.component';
 import { CartLocalComponent } from './pedidosManager/cart-local/cart-local.component';
+import { AdicionaisEditComponent } from './adiconaisManager/adicionais-edit/adicionais-edit.component';
+import { EditAdicionaisComponent } from './adicionaisManager/edit-adicionais/edit-adicionais.component';
+import { PrintComponent } from './pedidosManager/print/print.component';
 
 
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, CardapioComponent, AddItemComponent, TaxaEntregaComponent, ExpedienteComponent, PromoComponent, PagamentosComponent, PerfilComponent, EditItemComponent, CategoriaComponent, AdicionaisComponent, AdicionaisAddComponent, PedidosManagerComponent, PendenteComponent, AndamentoComponent, FinalizadoComponent, SaiuEntregaComponent, PrintConfigComponent, LocalAtendimentoComponent, LocalShopComponent, CartLocalComponent],
+  declarations: [DashboardComponent, CardapioComponent, AddItemComponent, TaxaEntregaComponent, ExpedienteComponent, PromoComponent, PagamentosComponent, PerfilComponent, EditItemComponent, CategoriaComponent, AdicionaisComponent, AdicionaisAddComponent, PedidosManagerComponent, PendenteComponent, AndamentoComponent, FinalizadoComponent, SaiuEntregaComponent, PrintConfigComponent, LocalAtendimentoComponent, LocalShopComponent, CartLocalComponent, AdicionaisEditComponent, EditAdicionaisComponent, PrintComponent],
   imports: [
     CommonModule,
     BusinessRoutingModule,

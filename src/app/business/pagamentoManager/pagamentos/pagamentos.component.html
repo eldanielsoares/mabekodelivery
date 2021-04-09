@@ -8,7 +8,7 @@
         <article style="margin-top: 20px;margin-bottom: 20px;color: #ff5722; font-size: 1em; text-align: center;font-weight: bold;">Quais Suas formas de pagamento?</article>
 
     <form [formGroup]="formasPgt" style="margin-top: 20px;">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
             <mat-label>Formas de pagamento</mat-label>
             <mat-select multiple formControlName="pgt">
                 <mat-option *ngFor="let p of pagamento" [value]="p">

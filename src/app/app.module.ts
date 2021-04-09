@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +13,6 @@ import {AngularFireAuthModule} from '@angular/fire/auth'
 import {AngularFireStorageModule} from '@angular/fire/storage'
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics'
-import { AsyncPipe } from '../../node_modules/@angular/common'
 import { AngularFireMessagingModule } from '@angular/fire/messaging'
 import { AgmCoreModule } from '@agm/core';
 import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
@@ -44,7 +43,7 @@ import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/goog
 
     
   ],
-  providers: [ AsyncPipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

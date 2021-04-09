@@ -10,7 +10,7 @@
         <article style="color: #ff5722; text-align: center; font-weight: bold;font-size: 1.5em;margin-top: 10px;">
             Escolha aqui em que categorias seus produtos estão</article>
         <form [formGroup]="categorias" style="margin-top: 20px;">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Categorias</mat-label>
                 <mat-select multiple formControlName="category">
                     <mat-option *ngFor="let c of cat" [value]="c">

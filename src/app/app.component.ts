@@ -22,6 +22,7 @@ export class AppComponent {
       if (user?.uid != null) {
         this.notify.requestToken(user?.uid)
       }
+      this.notify.listen()
     })
     
     /*if('geolocation' in navigator){

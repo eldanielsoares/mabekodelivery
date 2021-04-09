@@ -7,7 +7,7 @@
         <br>Digite seu e-mail cadastrado na Mabeko e altere sua senha.
     </p>
     <form [formGroup]="reset" style="display: flex;flex-direction: column;" (ngSubmit)="HandleReset()" *ngIf="!loading; else load">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
             <mat-label>E-mail</mat-label>
             <input matInput formControlName="email" placeholder="email" required type="email">
         </mat-form-field>

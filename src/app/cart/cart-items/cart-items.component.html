@@ -9,18 +9,18 @@
    <div class="container-full" *ngIf="!loading; else loaded">
       <div class="container">
          <form [formGroup]="obs" style="margin-top: 10px;display: flex; flex-direction: column; align-items:center">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                <mat-label>Seu nome</mat-label>
                <input matInput formControlName="nome" placeholder="Seu nome" required autocomplete="off"
                   (input)="handleName($event.target)">
             </mat-form-field>
 
-            <mat-form-field appearance="fill" *ngIf="!url?.receberPorWhatsapp">
+            <mat-form-field appearance="outline" *ngIf="!url?.receberPorWhatsapp">
                <mat-label>Whatsapp com DDD</mat-label>
                <input matInput formControlName="fone" placeholder="Whatsapp com DDD" autocomplete="off" required type="number" (input)="handleFone($event.target)">
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                <mat-label>Observação</mat-label>
                <input matInput formControlName="observation" placeholder="Observação" autocomplete="off">
             </mat-form-field>
@@ -32,12 +32,12 @@
             </mat-radio-group>
    
             <ng-container>
-               <!--<mat-form-field appearance="fill" *ngIf="entrega == 'true'; else retirada">
+               <!--<mat-form-field appearance="outline" *ngIf="entrega == 'true'; else retirada">
                   <mat-label>Endereco</mat-label>
                 <input matInput  matGoogleMapsAutocomplete country="br" 
                     (onAutocompleteSelected)="onAutocompleteSelected($event)" formControlName="endereco">
                </mat-form-field>-->
-               <mat-form-field style="width: 100%;" appearance="fill" *ngIf="entrega == 'true'; else retirada">
+               <mat-form-field style="width: 100%;" appearance="outline" *ngIf="entrega == 'true'; else retirada">
                   <mat-label>Endereço</mat-label>
                   <input matInput  matGoogleMapsAutocomplete country="br" 
                       (onAutocompleteSelected)="onAutocompleteSelected($event)" formControlName="endereco" >
@@ -50,7 +50,7 @@
 
             <p style="text-align:center">Taxa de entrega: {{taxa | currency : 'R$'}}</p>
    
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                <mat-label>Método de pagamento</mat-label>
                <mat-select formControlName="pgt" required (selectionChange)="pgtType($event)">
                   <mat-option *ngFor="let pg of url?.pagamentos" [value]="pg" required>
@@ -59,13 +59,13 @@
                </mat-select>
             </mat-form-field>
    
-            <mat-form-field appearance="fill" *ngIf="pgt == 'Dinheiro'">
+            <mat-form-field appearance="outline" *ngIf="pgt == 'Dinheiro'">
                <mat-label>Troco</mat-label>
                <input matInput formControlName="troco" placeholder="Troco" type="number" autocomplete="off">
             </mat-form-field>
    
             <div>
-               <mat-form-field appearance="fill" style="width: 150px;">
+               <mat-form-field appearance="outline" style="width: 150px;">
                   <mat-label>Cupom de desconto</mat-label>
                   <input matInput formControlName="desconto" placeholder="Cupom de desconto" style='text-transform:uppercase' autocomplete="off">
                </mat-form-field>
@@ -104,12 +104,23 @@
             </div>
    
             <div class="cont3" [formGroup]="sabor">
-               <div formArrayName="sabores">
-                  <mat-form-field appearance="fill" *ngIf="c.sabor && c.sabor != [] ">
+               <div formArrayName="sabores" class="contentEsc">
+                  <mat-form-field appearance="outline" *ngIf="c.sabor && c.sabor != [] ">
                      <mat-label>Sabor</mat-label>
                      <mat-select [formControlName]="i" [multiple]="c.multiSabor">
                         <mat-option *ngFor="let s of c.sabor" [value]="s">
                            {{s}}
+                        </mat-option>
+                     </mat-select>
+                  </mat-form-field>
+               </div>
+
+               <div formArrayName="adicionais" class="contentEsc">
+                  <mat-form-field appearance="outline" >
+                     <mat-label>Adicionais</mat-label>
+                     <mat-select [formControlName]="i" multiple (selectionChange)="setAdicionais($event)">
+                        <mat-option *ngFor="let s of getAdicionais(c.categoria)" [value]="s.nome  + ' - R$ ' + s.preco!.toFixed(2)">
+                           {{s.nome}} - {{s.preco | currency: 'R$'}}
                         </mat-option>
                      </mat-select>
                   </mat-form-field>

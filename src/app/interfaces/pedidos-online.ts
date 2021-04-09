@@ -17,7 +17,8 @@ export interface PedidosOnline {
     status?: number,
     troco?: string,
     mesa?: string,
-    entregaTaxa?: number
+    entregaTaxa?: number,
+    token?: string
 
 
 }

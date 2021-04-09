@@ -17,13 +17,15 @@ export class PedidosManagerComponent implements OnInit {
   ngOnInit(): void {
     let valor = 0
     let size= 0 
-    this.auth.authState.subscribe((user)=>{
+    this.auth.authState.subscribe((user: any)=>{
       if (user?.uid != null) {
-        this.ps.getPedidosPendente(user?.uid).subscribe((data)=>{
-
+        this.ps.getPedidosPendente(user?.uid).subscribe((data: any)=>{
+          
           if (valor != 0 && size < data.length) {
-            this.playAudio()
+            //this.playAudio()
+            //
             this.notify.notifications('Você recebeu um novo pedido')
+            this.playAudio()
           }
 
           valor = 1

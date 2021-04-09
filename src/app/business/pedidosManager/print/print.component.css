@@ -1,0 +1,27 @@
+#print{
+    width: 208px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header{
+    width: 100%;
+    border-bottom: 2px dashed #ececec;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2px;
+    text-align: center;
+    
+    
+}
+
+.header article{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 100;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8em;
+}

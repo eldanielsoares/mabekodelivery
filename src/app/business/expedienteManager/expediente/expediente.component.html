@@ -6,7 +6,7 @@
 <div class="container">
     <div class="container" *ngIf="!loading; else load">
         <article style="margin-bottom: 20px;color: #ff5722; font-size: 1em; text-align: center;font-weight: bold;">Quais dias seu estabelecimento funciona?</article>
-    <mat-form-field appearance="fill" [formGroup]="expedienteEsc">
+    <mat-form-field appearance="outline" [formGroup]="expedienteEsc">
         <mat-label>Expediente</mat-label>
         <mat-select multiple formControlName="exp">
             <mat-option *ngFor="let dias of expediente; let i=index" value="{{i+1}}">
@@ -17,13 +17,13 @@
 
     <article style="margin-top: 20px;margin-bottom: 20px;color: #ff5722;text-align: center; font-size: 1em; font-weight: bold;">E os horários de funcionamento?</article>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
             <mat-label>Abre às</mat-label>
             <input matInput [ngxTimepicker]="inicio" [format]=24 [(ngModel)]="horaInicio">
             <ngx-material-timepicker #inicio></ngx-material-timepicker>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
             <mat-label>Fecha às</mat-label>
             <input matInput [ngxTimepicker]="fim" [format]=24 [(ngModel)]="horaFim">
             <ngx-material-timepicker #fim></ngx-material-timepicker>

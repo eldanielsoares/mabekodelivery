@@ -1,0 +1,40 @@
+<div id="print">
+    <div class="header">
+        <article>{{pedidos?.nomeVendedor}}</article>
+    </div>
+    <div class="header">
+        <article>Nome cliente: <b>{{pedidos?.nomeCliente}}</b></article>
+        <article>Telefone Cliente: <b>{{pedidos?.telefoneCliente}}</b></article>
+    </div>
+    <div class="header">
+        <article>PEDIDO</article>
+        <article *ngFor="let p of pedidos?.pedido"><b>{{p}}</b></article>
+    </div>
+    <div class="header">
+        <article>Observação: <b>{{pedidos?.observacao}}</b></article>
+    </div>
+    <div class="header" *ngIf="pedidos?.delivery">
+        <article>Endereço de entrega: <b>{{pedidos?.endereco}}</b></article>
+    </div>
+
+    <div class="header" *ngIf="!pedidos?.delivery">
+        <article>Tipo de entrega: <b>Retirada</b></article>
+    </div>
+    <div class="header">
+        <article>Forma de pagamento: {{pedidos?.formaPagamento}}</article>
+    </div>
+    <div class="header" *ngIf="pedidos?.troco" >
+        <article>Troco: <b>{{pedidos?.troco}}</b></article>
+    </div>
+    <div class="header">
+        <article>Taxa de entrega: <b>{{pedidos?.entregaTaxa | currency: 'R$'}}</b></article>
+    </div>
+
+    <div class="header" *ngIf="pedidos?.desconto">
+        <article>Descontos: <b>{{pedidos?.desconto | currency: 'R$'}}</b></article>
+    </div>
+
+    <div class="header">
+        <article>Total: <b>{{pedidos?.preco | currency: 'R$'}}</b></article>
+    </div>
+</div>

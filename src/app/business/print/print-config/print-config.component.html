@@ -11,13 +11,13 @@
             promoções</p>
         <div class="box">
             <form [formGroup]="print" (ngSubmit)="handlePrint()">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="outline">
                     <mat-label>Largura</mat-label>
                     <input matInput required placeholder="Nome cupom" style='text-transform:uppercase'  autocomplete="off"
                         formControlName="largura">
                 </mat-form-field>
     
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="outline">
                     <mat-label>Altura</mat-label>
                     <input matInput required autocomplete="off" type="number" placeholder="Desconto em %"
                         formControlName="altura">

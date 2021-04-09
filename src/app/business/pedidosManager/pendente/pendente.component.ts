@@ -5,6 +5,7 @@ import { PedidosOnline } from 'src/app/interfaces/pedidos-online';
 import { PremiumService } from 'src/app/shop-premium/premium.service';
 import * as jspdf from 'jspdf'
 import * as Constants from '../../../constants/constants'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pendente',
@@ -16,7 +17,8 @@ export class PendenteComponent implements OnInit {
   pendente$?: Observable<PedidosOnline[]>
   panelOpenState = false;
   constructor(private ps: PremiumService,
-    private auth: AngularFireAuth) { }
+    private auth: AngularFireAuth,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.auth.authState.subscribe(user => {
@@ -46,7 +48,7 @@ export class PendenteComponent implements OnInit {
 
   handleRecusar(p: any) {
     p as PedidosOnline
-    this.ps.deletePedido(p.docId).then(() => {
+    this.ps.updateStatusDelete(p.docId).then(() => {
       console.log('recusado');
 
     }).catch(e => {
@@ -57,7 +59,7 @@ export class PendenteComponent implements OnInit {
   }
 
   print(p: PedidosOnline) {
-    let altura = '120'
+    /*let altura = '120'
     let largura = '80'
     if (localStorage.getItem(Constants.KEYS.ALTURA) != '') {
       altura = localStorage.getItem(Constants.KEYS.ALTURA)!
@@ -82,10 +84,10 @@ export class PendenteComponent implements OnInit {
 
       ped += `${p.pedido[parseInt(p1)]}\n`
 
-    }
+    }*/
 
-    let txtEndereco1 = p.endereco!.split(/\s*,\s*/)
-    let adress = ''
+    //let txtEndereco1 = p.endereco!.split(/\s*,\s*/)
+    /*let adress = ''
     for (let s in txtEndereco1) {
       adress += `${txtEndereco1[s]}\n`
     }
@@ -94,7 +96,8 @@ export class PendenteComponent implements OnInit {
     doc.setFontSize(8)
     doc.text(txt, 5, 5)
 
-    doc.output('dataurlnewwindow')
+    doc.output('dataurlnewwindow')*/
+    this.router.navigateByUrl('/dashboard/print', {state:{ print: p}})
   }
 
 

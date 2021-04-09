@@ -7,7 +7,26 @@
 
 <div class="conteiner">
 
+    <mat-card class="card" *ngFor="let a of adicional$|async">
+        <div class="content1">
+           <h1>{{a.nome}}</h1>
+           <article>{{a.categoria}}</article>
+           <article>{{a.preco | currency: 'R$'}}</article>
+        </div>
+        <div class="content2" >
+           <button mat-icon-button (click)="goToEdit(a)">
+               <mat-icon>edit</mat-icon>
+           </button>
 
-    <button mat-mini-fab color="primary" class="float-button" (click)="goToAdd()">
-        <mat-icon style="color: #fff">add</mat-icon>
-    </button>
+           <button mat-icon-button (click)="deleteAdd(a.docId)">
+            <mat-icon>delete</mat-icon>
+           </button>
+        </div>
+    </mat-card>
+
+</div>
+
+
+<button mat-mini-fab color="primary" class="float-button" (click)="goToAdd()">
+    <mat-icon style="color: #fff">add</mat-icon>
+</button>

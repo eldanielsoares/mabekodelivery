@@ -22,19 +22,19 @@
 
     <div class="box" *ngIf="!loading; else load">
         <form [formGroup]="item">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Nome comida</mat-label>
                 <input matInput type="text" formControlName="nome" autocomplete="off" required
                     placeholder="Nome comida">
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Ingredientes</mat-label>
                 <input matInput type="text" formControlName="ingredientes" autocomplete="off" required
                     placeholder="Ingredientes">
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Sabor</mat-label>
                 <input matInput type="text" formControlName="sabor" autocomplete="off" placeholder="Sabor">
                 <article style="color: red; font-size: 0.5em;">Caso tenha variações de sabor, separe por vírgula*
@@ -47,7 +47,7 @@
                 <mat-radio-button value="false" style="margin:5px">Não</mat-radio-button>
             </mat-radio-group>
 
-            <!--<mat-form-field appearance="fill">
+            <!--<mat-form-field appearance="outline">
             <mat-label>Sabor</mat-label>
             <input matInput type="text" formControlName="sabor" autocomplete="off" placeholder="Sabor">
             <article style="color: red; font-size: 0.5em;">Caso tenha variações de sabor, separe por vírgula*</article>
@@ -59,7 +59,7 @@
             <mat-radio-button value="false" style="margin:5px">Não</mat-radio-button>
         </mat-radio-group>-->
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Categoria</mat-label>
                 <mat-select formControlName="categoria">
                     <mat-option *ngFor="let cat of categorias" [value]="cat">
@@ -68,7 +68,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Preço</mat-label>
                 <input matInput type="number" formControlName="preco" autocomplete="off" required placeholder="Preço">
             </mat-form-field>

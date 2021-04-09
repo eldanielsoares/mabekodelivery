@@ -6,6 +6,7 @@ import * as Constants from '../constants/constants'
 import { Produto } from '../interfaces/product';
 import { Adicionais } from '../interfaces/adicionais';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +23,16 @@ export class BusinessService {
 
   saveAdicionais(docId: string, add: Adicionais){
     return this.afs.collection(Constants.COLLECTIONS.ADICIONAIS).doc(docId).set(add)
+  }
+
+  getAdicionais(uid: string): Observable<Adicionais[]>{
+    return this.afs.collection<Adicionais>(Constants.COLLECTIONS.ADICIONAIS, ref => ref.where('uid', '==', uid)).valueChanges()
+  }
+  deleteAdicionais(docId: string){
+    return this.afs.collection(Constants.COLLECTIONS.ADICIONAIS).doc(docId).delete()
+  }
+  editAdicionais(docId: string, add: Adicionais){
+    return this.afs.collection(Constants.COLLECTIONS.ADICIONAIS).doc(docId).update(add)
   }
 
   getMyProducts(userId: string,categoria : string): Observable<Produto[]>{

@@ -60,6 +60,10 @@ export class PremiumService {
     return this.afs.collection(Constants.COLLECTIONS.PEDIDOS).doc(docId).update({status: status + 1})
   }
 
+  updateStatusDelete(docId: string){
+    return this.afs.collection(Constants.COLLECTIONS.PEDIDOS).doc(docId).update({status:7})
+  }
+
   deletePedido(docId: string){
     return this.afs.collection(Constants.COLLECTIONS.PEDIDOS).doc(docId).delete()
   }

@@ -10,13 +10,13 @@
         <p style="margin-top: 15px; color: #ff5722; font-weight: bold;text-align: center; font-size: 1em;">Quanto você cobra de taxa por KM?</p>
         <div class="box">
             <form [formGroup]="promo" (ngSubmit)="handlePromo()">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="outline">
                     <mat-label>Taxa por KM</mat-label>
                     <input matInput required placeholder="Taxa por KM" type="number" style='text-transform:uppercase'  autocomplete="off"
                         formControlName="entrega">
                 </mat-form-field>
                 <p style="margin-top: 15px; color: #ff5722; font-weight: bold;text-align: center; font-size: 1em;">Qual sua menor taxa de entrega? (a menor taxa de entrega sempre vai ser o valor que você escolher aqui)</p>
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="outline">
                     <mat-label>Taxa mínima</mat-label>
                     <input matInput required placeholder="Taxa por KM" type="number" style='text-transform:uppercase'  autocomplete="off"
                         formControlName="minEntrega">

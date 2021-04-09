@@ -58,7 +58,7 @@ export class AdicionaisAddComponent implements OnInit {
   }
 
   goToBack() {
-    this.router.navigateByUrl('/dashboard/add-extras', { replaceUrl: true })
+    this.router.navigateByUrl('/dashboard', { replaceUrl: true })
   }
 
 }

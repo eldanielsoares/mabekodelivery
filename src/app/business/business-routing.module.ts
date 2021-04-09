@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdicionaisAddComponent } from './adicionaisManager/adicionais-add/adicionais-add.component';
 import { AdicionaisComponent } from './adicionaisManager/adicionais/adicionais.component';
+import { EditAdicionaisComponent } from './adicionaisManager/edit-adicionais/edit-adicionais.component';
 import { AddItemComponent } from './cardapioManager/add-item/add-item.component';
 import { CardapioComponent } from './cardapioManager/cardapio/cardapio.component';
 import { EditItemComponent } from './cardapioManager/edit-item/edit-item.component';
@@ -13,7 +14,7 @@ import { PagamentosComponent } from './pagamentoManager/pagamentos/pagamentos.co
 import { CartLocalComponent } from './pedidosManager/cart-local/cart-local.component';
 import { LocalShopComponent } from './pedidosManager/local-shop/local-shop.component';
 import { PedidosManagerComponent } from './pedidosManager/pedidos-manager/pedidos-manager.component';
-import { PendenteComponent } from './pedidosManager/pendente/pendente.component';
+import { PrintComponent } from './pedidosManager/print/print.component';
 import { PerfilComponent } from './perfilManager/perfil/perfil.component';
 import { PrintConfigComponent } from './print/print-config/print-config.component';
 import { PromoComponent } from './promoçõesManager/promo/promo.component';
@@ -34,7 +35,9 @@ const routes: Routes = [
   {path: 'meus-pedidos', component: PedidosManagerComponent},
   {path:'print-config', component: PrintConfigComponent},
   {path: 'shop-local', component: LocalShopComponent},
-  {path:'cart-local', component: CartLocalComponent}
+  {path:'cart-local', component: CartLocalComponent},
+  {path: 'edit-extra', component:EditAdicionaisComponent},
+  {path: 'print', component: PrintComponent}
 ];
 
 @NgModule({

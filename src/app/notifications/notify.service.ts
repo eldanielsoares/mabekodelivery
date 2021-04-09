@@ -15,9 +15,16 @@ export class NotifyService {
 
   requestToken(uid: string) {
     if (uid != null) {
-      this.angularMessaging.requestToken.subscribe((token) => {
+      this.angularMessaging.requestToken.subscribe((token: any) => {
         localStorage.setItem(constants.KEYS.TOKEN, token?.toString()!)
       })
     }
+  }
+
+  listen() {
+    this.angularMessaging.messages
+      .subscribe((message : any) => {
+        console.log(message);
+      });
   }
 }

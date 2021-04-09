@@ -45,7 +45,7 @@ export class AndamentoComponent implements OnInit {
 
   handleRecusar(p: any) {
     p as PedidosOnline
-    this.ps.deletePedido(p.docId).then(() => {
+    this.ps.updateStatusDelete(p.docId).then(() => {
       console.log('recusado');
 
     }).catch(e => {
