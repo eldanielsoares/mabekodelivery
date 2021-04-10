@@ -17,39 +17,64 @@
 
             <mat-form-field appearance="outline" *ngIf="!url?.receberPorWhatsapp">
                <mat-label>Whatsapp com DDD</mat-label>
-               <input matInput formControlName="fone" placeholder="Whatsapp com DDD" autocomplete="off" required type="number" (input)="handleFone($event.target)">
+               <input matInput formControlName="fone" placeholder="Whatsapp com DDD" autocomplete="off" required
+                  type="number" (input)="handleFone($event.target)">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                <mat-label>Observação</mat-label>
                <input matInput formControlName="observation" placeholder="Observação" autocomplete="off">
             </mat-form-field>
-   
+
             <article style="font-weight: bold; color: #ff5722; text-align: center;">Tipo de entrega</article>
             <mat-radio-group formControlName="delivery" (change)="handleDelivery($event)">
                <mat-radio-button value="true" style="margin: 5px">Delivery</mat-radio-button>
                <mat-radio-button value="false" style="margin: 5px">Retirada</mat-radio-button>
             </mat-radio-group>
-   
+
             <ng-container>
                <!--<mat-form-field appearance="outline" *ngIf="entrega == 'true'; else retirada">
                   <mat-label>Endereco</mat-label>
                 <input matInput  matGoogleMapsAutocomplete country="br" 
                     (onAutocompleteSelected)="onAutocompleteSelected($event)" formControlName="endereco">
                </mat-form-field>-->
-               <mat-form-field style="width: 100%;" appearance="outline" *ngIf="entrega == 'true'; else retirada">
+               <mat-form-field style="width: 100%;" appearance="outline"
+                  *ngIf="entrega == 'true' && url?.freteDinamico ">
                   <mat-label>Endereço</mat-label>
-                  <input matInput  matGoogleMapsAutocomplete country="br" 
-                      (onAutocompleteSelected)="onAutocompleteSelected($event)" formControlName="endereco" >
-              </mat-form-field>
-               <ng-template #retirada>
-                  <article style="font-weight:bold; color:#ff5722; text-align: center;" #endereco>Endereço para retirada: <br>{{url?.endereco}},
-                     </article>
-               </ng-template>
+                  <input matInput matGoogleMapsAutocomplete country="br"
+                     (onAutocompleteSelected)="onAutocompleteSelected($event)" formControlName="endereco" required>
+               </mat-form-field>
+
+               <mat-form-field appearance="outline" *ngIf="entrega == 'true' && !url?.freteDinamico ">
+                  <mat-label>Escolha o bairro</mat-label>
+                  <mat-select formControlName="enderecoFixo" (selectionChange)="setBairro($event)">
+                     <mat-option *ngFor="let b of url?.enderecosFixos" [value]="b">
+                        {{b}}
+                     </mat-option>
+                  </mat-select>
+               </mat-form-field>
+
+               <mat-form-field appearance="outline" *ngIf="entrega == 'true' ">
+                  <mat-label *ngIf="url?.freteDinamico">Complemento</mat-label>
+                  <mat-label *ngIf="!url?.freteDinamico">Endereço completo</mat-label>
+                  <input matInput formControlName="complemento" placeholder="Complemento" autocomplete="off">
+                  <article style="font-size: 0.7em; text-align: center; color: red;" *ngIf="url?.freteDinamico">
+                     Adicione alguns complementos para facilitar a entrega, como : número, quadra, ponto de referência.
+                  </article>
+                  <article style="font-size: 0.7em; text-align: center; color: red;" *ngIf="!url?.freteDinamico">
+                     Digite seu endereço com rua, número, complemento e/ou ponto de referência
+                  </article>
+               </mat-form-field>
+
+               <div *ngIf="entrega == 'false' ">
+                  <article style="font-weight:bold; color:#ff5722; text-align: center;" #endereco>Endereço para
+                     retirada: <br>{{url?.endereco}},
+                  </article>
+               </div>
             </ng-container>
 
             <p style="text-align:center">Taxa de entrega: {{taxa | currency : 'R$'}}</p>
-   
+
             <mat-form-field appearance="outline">
                <mat-label>Método de pagamento</mat-label>
                <mat-select formControlName="pgt" required (selectionChange)="pgtType($event)">
@@ -58,30 +83,31 @@
                   </mat-option>
                </mat-select>
             </mat-form-field>
-   
+
             <mat-form-field appearance="outline" *ngIf="pgt == 'Dinheiro'">
                <mat-label>Troco</mat-label>
                <input matInput formControlName="troco" placeholder="Troco" type="number" autocomplete="off">
             </mat-form-field>
-   
+
             <div>
                <mat-form-field appearance="outline" style="width: 150px;">
                   <mat-label>Cupom de desconto</mat-label>
-                  <input matInput formControlName="desconto" placeholder="Cupom de desconto" style='text-transform:uppercase' autocomplete="off">
+                  <input matInput formControlName="desconto" placeholder="Cupom de desconto"
+                     style='text-transform:uppercase' autocomplete="off">
                </mat-form-field>
                <button mat-icon-button (click)="descount()" [disabled]="disable">
                   <mat-icon color="primary">check</mat-icon>
                </button>
             </div>
-            
-   
+
+
          </form>
-   
+
          <mat-card class="card" *ngFor="let c of cart; let i=index" class="card">
             <div class="cont1">
                <h4 style="margin-top: 5px;">{{c.pedido}}</h4>
             </div>
-   
+
             <div class="cont2">
                <div class="info1">
                   <button mat-icon-button (click)="min(c, i)">
@@ -95,14 +121,14 @@
                      <mat-icon color="warn">delete</mat-icon>
                   </button>
                </div>
-   
+
                <div class="info2">
                   <div class="precoInfo">
                      <h4 style="text-align:center; color: red; font-weight: bold;">{{c.preco | currency: 'R$'}}</h4>
                   </div>
                </div>
             </div>
-   
+
             <div class="cont3" [formGroup]="sabor">
                <div formArrayName="sabores" class="contentEsc">
                   <mat-form-field appearance="outline" *ngIf="c.sabor && c.sabor != [] ">
@@ -116,45 +142,52 @@
                </div>
 
                <div formArrayName="adicionais" class="contentEsc">
-                  <mat-form-field appearance="outline" >
+                  <mat-form-field appearance="outline">
                      <mat-label>Adicionais</mat-label>
                      <mat-select [formControlName]="i" multiple (selectionChange)="setAdicionais($event)">
-                        <mat-option *ngFor="let s of getAdicionais(c.categoria)" [value]="s.nome  + ' - R$ ' + s.preco!.toFixed(2)">
+                        <mat-option *ngFor="let s of getAdicionais(c.categoria)"
+                           [value]="s.nome  + ' - R$ ' + s.preco!.toFixed(2)">
                            {{s.nome}} - {{s.preco | currency: 'R$'}}
                         </mat-option>
                      </mat-select>
                   </mat-form-field>
                </div>
             </div>
-   
-   
+
+
          </mat-card>
       </div>
-   
+
       <div class="area-finish">
          <article style="margin-top: 10px; font-size: 1.5em;">Total pedido: <b style="color: red;">{{total | currency:
                'R$'}}</b> </article>
          <button mat-raised-button [disabled]="!obs.valid " color="primary"
-            style="width:200px; color:#fff; margin-top: 10px;" (click)="finishCart()" *ngIf="url?.receberPorWhatsapp; else premium">Enviar
+            style="width:200px; color:#fff; margin-top: 10px;" (click)="finishCart()"
+            *ngIf="url?.receberPorWhatsapp; else premium">Enviar
             Pedido</button>
-   
+
          <ng-template #premium>
             <button mat-raised-button [disabled]="!obs.valid" color="primary"
-            style="width:200px; color:#fff; margin-top: 10px;" (click)="finishPremium()" >Finalizar pedido</button>
+               style="width:200px; color:#fff; margin-top: 10px;" (click)="finishPremium()">Finalizar pedido</button>
          </ng-template>
       </div>
    </div>
    <ng-template #loaded>
-      <div style="width:100%;height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div
+         style="width:100%;height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
          <mat-spinner></mat-spinner>
       </div>
    </ng-template>
 </ng-container>
 
 <ng-template #logar>
-   <div style="padding-top: 65px; width: 100%; height: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-      <h1 style="color: #ff5722; font-weight: 700; text-align: center; margin: 0 5% 0 5%;">Entre na sua conta para continuar com a compra</h1>
-      <button mat-raised-button style="color:cornflowerblue; background-color: white; width: 200px; margin-top: 10px;" (click)="login()">Entrar com Google</button>
-      <button mat-raised-button style="color:white; background-color: #1f3a93; width: 200px; margin-top: 10px;" (click)="loginFacebook()">Entrar com Facebook</button>
+   <div
+      style="padding-top: 65px; width: 100%; height: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <h1 style="color: #ff5722; font-weight: 700; text-align: center; margin: 0 5% 0 5%;">Entre na sua conta para
+         continuar com a compra</h1>
+      <button mat-raised-button style="color:cornflowerblue; background-color: white; width: 200px; margin-top: 10px;"
+         (click)="login()">Entrar com Google</button>
+      <button mat-raised-button style="color:white; background-color: #1f3a93; width: 200px; margin-top: 10px;"
+         (click)="loginFacebook()">Entrar com Facebook</button>
    </div>
 </ng-template>

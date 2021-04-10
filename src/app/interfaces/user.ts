@@ -22,5 +22,7 @@ export interface User {
     dataInicio?: number,
     receberPorWhatsapp?: boolean,
     endereco?: string,
-    minTaxa?: number
+    minTaxa?: number,
+    freteDinamico?:boolean,
+    enderecosFixos?: string[]
 }

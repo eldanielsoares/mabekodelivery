@@ -104,7 +104,8 @@ export class RegisterComponent implements OnInit {
           email: this.register.controls['email'].value,
           dataInicio: Date.now(),
           receberPorWhatsapp: plano,
-          endereco: this.register.controls['endereco'].value
+          endereco: this.register.controls['endereco'].value,
+          freteDinamico: true
         }
         if (userID?.uid != null) {
           this.authService.createAccount(userID?.uid, user).then(() => {

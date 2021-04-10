@@ -15,7 +15,7 @@ export class ShopPremiumComponent implements OnInit {
   }
 
   gotoHome(){
-    this.url = sessionStorage.getItem('url')!
+    this.url = localStorage.getItem('url')!
     this.router.navigateByUrl(`/d/${this.url}`)
   }
 

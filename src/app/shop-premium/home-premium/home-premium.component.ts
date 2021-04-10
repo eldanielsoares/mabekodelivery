@@ -30,7 +30,7 @@ export class HomePremiumComponent implements OnInit {
   ngOnInit(): void {
     let p = this.route.snapshot.paramMap.get('url')
     this.url = p!
-    sessionStorage.setItem('url', p!)
+    localStorage.setItem('url', p!)
     this.user$ = this.shopService.getUserShop(p!)
     this.prod$ = this.shopService.getUserProds(p!, '')
     this.cart = this.shopService.getPedido()

@@ -37,9 +37,11 @@ export class CartItemsComponent implements OnInit {
     'pgt': ['', [Validators.required]],
     'delivery': ['true'],
     'endereco': [''],
+    'enderecoFixo': [''],
     'troco': ['0'],
     'desconto': [''],
-    'fone': ['', [Validators.required]]
+    'fone': ['', [Validators.required]],
+    'complemento': ['']
   })
   entrega?: any = 'true'
   entregaForm: boolean = true
@@ -170,6 +172,14 @@ export class CartItemsComponent implements OnInit {
 
   }
 
+  setBairro(evt: any){
+    let bairro = evt.value as string;
+    this.taxa = 0
+    this.taxa = parseFloat(bairro.substring(bairro.lastIndexOf('$')+1))
+    this.total = (this.totalPreco + this.adicionalValor) - (this.totalPreco * (this.desconto / 100)) + this.taxa!
+    
+  }
+
   login() {
     this.premiumService.loginGoogle().then(user => {
       this.auth.authState.subscribe(userData => {
@@ -222,11 +232,16 @@ export class CartItemsComponent implements OnInit {
 
   handleDelivery(evt: any) {
     this.entrega = evt.value
-    if (evt.value == 'true') {
+    if (evt.value == 'true' && this.url?.freteDinamico) {
       this.obs.controls['endereco'].setValue('')
-    } else if (evt.value == 'false') {
+      this.obs.controls['enderecoFixo'].setValue('dinamico')
+    } else if (evt.value == 'false' ) {
       this.obs.controls['endereco'].setValue('retirada')
+      this.obs.controls['enderecoFixo'].setValue('retirada')
       this.taxa = 0
+    }else if(evt.value == 'true' && !this.url?.freteDinamico){
+      this.obs.controls['endereco'].setValue('fixo')
+      this.obs.controls['enderecoFixo'].setValue('')
     }
 
   }
@@ -301,6 +316,19 @@ export class CartItemsComponent implements OnInit {
       entrega = `*Entrega em:* ${this.obs.controls['endereco'].value}`
     }
 
+    if (this.entrega == 'false') {
+      entrega = `Retirar em: *${this.url?.endereco}*`
+    } else {
+      //entrega = `${this.obs.controls['endereco'].value}`
+      if(this.url?.freteDinamico){
+        entrega = `Entregar em: *${this.obs.controls['endereco'].value} - ${this.obs.controls['complemento']}*`
+      }else{
+        
+        let fixo = this.obs.controls['enderecoFixo'].value
+        entrega = `Entregar em: *${fixo.split('-')[0]} - ${this.obs.controls['complemento'].value}*`
+      }
+    }
+
     let selectionSabor = []
     selectionSabor = this.sabor.controls['sabores'].value
     let selectionAdd = []
@@ -344,7 +372,7 @@ export class CartItemsComponent implements OnInit {
 
     let descTxt = ''
     if (this.desconto > 0) {
-      let txt = this.total * (this.desconto / 100)
+      let txt = this.totalPreco * (this.desconto / 100)
       descTxt = ` R$ ${txt.toFixed(2)}`
     } else {
       descTxt = "Sem desconto"
@@ -369,7 +397,14 @@ export class CartItemsComponent implements OnInit {
     if (this.entrega == 'false') {
       entrega = `${this.url?.endereco}`
     } else {
-      entrega = `${this.obs.controls['endereco'].value}`
+      //entrega = `${this.obs.controls['endereco'].value}`
+      if(this.url?.freteDinamico){
+        entrega = `${this.obs.controls['endereco'].value} - ${this.obs.controls['complemento']}`
+      }else{
+        
+        let fixo = this.obs.controls['enderecoFixo'].value
+        entrega = `${fixo.split('-')[0]} - ${this.obs.controls['complemento'].value}`
+      }
     }
 
     let selectionSabor = []
@@ -415,7 +450,7 @@ export class CartItemsComponent implements OnInit {
     let desc = 0
     if (this.desconto > 0) {
       let txt = this.total * (this.desconto / 100)
-      desc = this.total * (this.desconto / 100)
+      desc = this.totalPreco * (this.desconto / 100)
       descTxt = ` R$ ${txt.toFixed(2)}`
     } else {
       descTxt = "Sem desconto"

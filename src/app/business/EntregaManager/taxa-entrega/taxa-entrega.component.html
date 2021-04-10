@@ -6,7 +6,15 @@
 </mat-toolbar>
 
 <div class="container">
-    <div class="container" *ngIf="!loading; else load">
+    <article style="margin-top: 10px; text-align:center; font-weight: bold; color: #ff5722;">Escolha um tipo de entrega</article>
+    <ng-container [formGroup]="promo" *ngIf="!loading">
+        <mat-radio-group formControlName="tipo" (change)="rd($event)">
+            <mat-radio-button value="true">Dinâmica</mat-radio-button>
+            <mat-radio-button value="false">Fixa</mat-radio-button>
+          </mat-radio-group>
+    </ng-container>
+    
+    <div class="container" *ngIf="!loading && dinamic;">
         <p style="margin-top: 15px; color: #ff5722; font-weight: bold;text-align: center; font-size: 1em;">Quanto você cobra de taxa por KM?</p>
         <div class="box">
             <form [formGroup]="promo" (ngSubmit)="handlePromo()">
@@ -27,8 +35,39 @@
             </form>
         </div>
     </div>
-    <ng-template #load>
+
+    <div *ngIf="!loading && !dinamic" class="container" [formGroup]="entregaFixa" >
+        <div class="content" formArrayName="fixa">
+            <ng-container *ngFor="let c of fixa.controls; let i=index">
+                <div class="contentFields" [formGroupName]="i">
+                    <mat-form-field style="width: 45%;" appearance="outline">
+                        <mat-label>Bairro</mat-label>
+                        <input matInput formControlName="bairro" placeholder="Bairro" required>
+                      </mat-form-field>
+            
+                      <mat-form-field style="width: 20%;" appearance="outline">
+                        <mat-label>R$</mat-label>
+                        <input matInput formControlName="preco" placeholder="R$" type="number" required>
+                      </mat-form-field>
+                      <button mat-icon-button (click)="delEnd(i)" color="warn">
+                          <mat-icon>delete</mat-icon>
+                      </button>
+                </div>
+            </ng-container>
+        </div>
+        <button mat-raised-button color="primary" style="color: #fff; width: 200px;"  (click)="handleFixa()"
+                    [disabled]="!entregaFixa.valid">Salvar</button>
+    </div>
+
+
+    <button *ngIf="!dinamic && !loading" mat-mini-fab color="primary" class="btn" (click)="addEndereco()">
+          <mat-icon>add</mat-icon>
+    </button>
+
+    
+    <div *ngIf="loading">
         <mat-spinner></mat-spinner>
-    </ng-template>
+    </div>
+
 </div>
 
