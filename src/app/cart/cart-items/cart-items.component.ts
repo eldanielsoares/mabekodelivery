@@ -30,6 +30,7 @@ export class CartItemsComponent implements OnInit {
   logged?= ''
   loading = false
   taxa?: number = 0
+  req: boolean = false
   //adicionais$!: Observable<Adicionais[]>
   obs = this.fb.group({
     'observation': [''],
@@ -75,6 +76,7 @@ export class CartItemsComponent implements OnInit {
     this.url = nav?.extras.state?.url
 
 
+
   }
 
   ngOnInit(): void {
@@ -105,6 +107,13 @@ export class CartItemsComponent implements OnInit {
     this.bs.getAdicionais(this.url?.uid!).subscribe((data) => {
       this.dataAdicionais = data
     })
+
+
+    if (!this.url?.freteDinamico) {
+      this.req = true
+    }
+
+
 
   }
 
@@ -172,12 +181,12 @@ export class CartItemsComponent implements OnInit {
 
   }
 
-  setBairro(evt: any){
+  setBairro(evt: any) {
     let bairro = evt.value as string;
     this.taxa = 0
-    this.taxa = parseFloat(bairro.substring(bairro.lastIndexOf('$')+1))
+    this.taxa = parseFloat(bairro.substring(bairro.lastIndexOf('$') + 1))
     this.total = (this.totalPreco + this.adicionalValor) - (this.totalPreco * (this.desconto / 100)) + this.taxa!
-    
+
   }
 
   login() {
@@ -235,11 +244,12 @@ export class CartItemsComponent implements OnInit {
     if (evt.value == 'true' && this.url?.freteDinamico) {
       this.obs.controls['endereco'].setValue('')
       this.obs.controls['enderecoFixo'].setValue('dinamico')
-    } else if (evt.value == 'false' ) {
+    } else if (evt.value == 'false') {
       this.obs.controls['endereco'].setValue('retirada')
       this.obs.controls['enderecoFixo'].setValue('retirada')
+      this.obs.controls['complemento'].setValue('retirada')
       this.taxa = 0
-    }else if(evt.value == 'true' && !this.url?.freteDinamico){
+    } else if (evt.value == 'true' && !this.url?.freteDinamico) {
       this.obs.controls['endereco'].setValue('fixo')
       this.obs.controls['enderecoFixo'].setValue('')
     }
@@ -320,10 +330,10 @@ export class CartItemsComponent implements OnInit {
       entrega = `Retirar em: *${this.url?.endereco}*`
     } else {
       //entrega = `${this.obs.controls['endereco'].value}`
-      if(this.url?.freteDinamico){
+      if (this.url?.freteDinamico) {
         entrega = `Entregar em: *${this.obs.controls['endereco'].value} - ${this.obs.controls['complemento']}*`
-      }else{
-        
+      } else {
+
         let fixo = this.obs.controls['enderecoFixo'].value
         entrega = `Entregar em: *${fixo.split('-')[0]} - ${this.obs.controls['complemento'].value}*`
       }
@@ -398,10 +408,10 @@ export class CartItemsComponent implements OnInit {
       entrega = `${this.url?.endereco}`
     } else {
       //entrega = `${this.obs.controls['endereco'].value}`
-      if(this.url?.freteDinamico){
+      if (this.url?.freteDinamico) {
         entrega = `${this.obs.controls['endereco'].value} - ${this.obs.controls['complemento']}`
-      }else{
-        
+      } else {
+
         let fixo = this.obs.controls['enderecoFixo'].value
         entrega = `${fixo.split('-')[0]} - ${this.obs.controls['complemento'].value}`
       }

@@ -112,6 +112,14 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('/dashboard/print-config')
   }
 
+  chat(){
+    let celular = `5598985815065`
+    let info = 'Olá, Mabeko'
+    let msg = window.encodeURIComponent(info)
+    window.open(`https://api.whatsapp.com/send?phone=${celular}&text=${msg}`)
+
+  }
+
 
 
   ngOnDestroy() {

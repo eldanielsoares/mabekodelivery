@@ -57,7 +57,7 @@
                <mat-form-field appearance="outline" *ngIf="entrega == 'true' ">
                   <mat-label *ngIf="url?.freteDinamico">Complemento</mat-label>
                   <mat-label *ngIf="!url?.freteDinamico">Endereço completo</mat-label>
-                  <input matInput formControlName="complemento" placeholder="Complemento" autocomplete="off">
+                  <input matInput formControlName="complemento" autocomplete="off" [required]="req">
                   <article style="font-size: 0.7em; text-align: center; color: red;" *ngIf="url?.freteDinamico">
                      Adicione alguns complementos para facilitar a entrega, como : número, quadra, ponto de referência.
                   </article>
