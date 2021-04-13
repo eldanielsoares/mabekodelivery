@@ -23,6 +23,7 @@
             <h4>Forma de pagamento: <b>{{p.formaPagamento}}</b></h4>
             <h4>Taxa de entrega: <b>{{p.entregaTaxa | currency : 'R$'}}</b></h4>
             <h4 *ngIf="p.troco">Troco: <b>{{p.troco | currency: 'R$'}}</b></h4>
+            <h4>TOTAL: <b>{{p.preco | currency : 'R$'}}</b></h4>
             <div class="actions">
                 <div class="icons">
                     <button mat-icon-button>

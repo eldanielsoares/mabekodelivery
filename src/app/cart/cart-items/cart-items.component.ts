@@ -431,7 +431,7 @@ export class CartItemsComponent implements OnInit {
         selectionSabor[p] = ''
       }
 
-      pedido.push(`${this.cart[p].quantidade} x ${this.cart[p].pedido} - R$${this.cart[p].preco} ${selectionSabor[p]}| \nAdicionais: ${selectionAdd[p]}`)
+      pedido.push(`${this.cart[p].quantidade} x ${this.cart[p].pedido} - R$${this.cart[p].preco?.toFixed(2)} ${selectionSabor[p]}| \nAdicionais: ${selectionAdd[p]}`)
       //pedidos += 
 
     }
@@ -495,7 +495,7 @@ export class CartItemsComponent implements OnInit {
         telefoneCliente: this.obs.controls['fone'].value,
         docId: docId,
         status: 1,
-        troco: this.obs.controls['troco'].value,
+        troco: `${this.obs.controls['troco'].value}`,
         entregaTaxa: + this.taxa!,
         token: localStorage.getItem(constants.KEYS.TOKEN)?.toString()
 

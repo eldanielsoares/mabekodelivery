@@ -34,6 +34,10 @@
         <article>Descontos: <b>{{pedidos?.desconto | currency: 'R$'}}</b></article>
     </div>
 
+    <div class="header" *ngIf="pedidos?.mesa">
+        <article>Mesa: <b>{{pedidos?.mesa}}</b></article>
+    </div>
+
     <div class="header">
         <article>Total: <b>{{pedidos?.preco | currency: 'R$'}}</b></article>
     </div>
