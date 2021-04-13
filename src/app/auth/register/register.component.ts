@@ -18,14 +18,8 @@ export class RegisterComponent implements OnInit {
     'whatsapp': ['', [Validators.required, Validators.maxLength(11)]],
     'email': ['', [Validators.required, Validators.email]],
     'senha': ['', [Validators.minLength(6), Validators.required]],
-    'cep': ['', [Validators.required]],
-    'rua': ['', [Validators.required]],
-    'bairro': ['', [Validators.required]],
-    'cidade': ['', [Validators.required]],
-    'estado': ['', [Validators.required]],
-    'numero': ['', [Validators.required]],
     'plano': ['true', [Validators.required]],
-    'endereco': ['']
+    'endereco': ['', [Validators.required]]
   })
 
   estados = [
@@ -86,11 +80,9 @@ export class RegisterComponent implements OnInit {
     var urlNome = this.register.controls['nome'].value
     let email = this.register.controls['email'].value
     let senha = this.register.controls['senha'].value
-    let plano: boolean
+    let plano: boolean = true
     if (this.register.controls['plano'].value == 'false') {
       plano = false
-    } else {
-      plano = true
     }
 
     this.authService.register(email, senha).then(() => {
@@ -105,7 +97,7 @@ export class RegisterComponent implements OnInit {
           dataInicio: Date.now(),
           receberPorWhatsapp: plano,
           endereco: this.register.controls['endereco'].value,
-          freteDinamico: true
+          freteDinamico: true,
         }
         if (userID?.uid != null) {
           this.authService.createAccount(userID?.uid, user).then(() => {

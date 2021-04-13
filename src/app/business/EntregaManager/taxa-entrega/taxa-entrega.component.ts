@@ -61,7 +61,7 @@ export class TaxaEntregaComponent implements OnInit {
       this.promoInfo.enderecosFixos.forEach((val)=>{
         this.fixa.push(
           this.fb.group({
-            'bairro': this.fb.control(val.split('-')[0]),
+            'bairro': this.fb.control(val.split('- R$')[0]),
             'preco': this.fb.control(parseFloat(val.substring(val.lastIndexOf('$')+1)))
             
           })

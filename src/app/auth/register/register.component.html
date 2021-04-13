@@ -20,7 +20,7 @@
                 <article style="text-align: center; margin-bottom: 2px; color: #ff5722; font-weight: 500;">Você deseja
                     aceitar seus
                     pedidos SOMENTE por:</article>
-                <mat-radio-group class="radio" formControlName="plano">
+                <mat-radio-group class="radio" formControlName="plano" required>
                     <mat-radio-button value="true" style="margin: 4px;">Whatsapp</mat-radio-button>
                     <mat-radio-button value="false" style="margin: 4px;">site</mat-radio-button>
                 </mat-radio-group>
@@ -61,7 +61,7 @@
             <mat-form-field style="width: 100%;" appearance="outline">
                 <mat-label>Endereço</mat-label>
                 <input matInput  matGoogleMapsAutocomplete country="br"
-                    (onAutocompleteSelected)="onAutocompleteSelected($event)">
+                    (onAutocompleteSelected)="onAutocompleteSelected($event)" required>
             </mat-form-field>
 
 
