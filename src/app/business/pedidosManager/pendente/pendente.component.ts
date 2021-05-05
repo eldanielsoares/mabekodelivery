@@ -25,6 +25,8 @@ export class PendenteComponent implements OnInit {
       this.pendente$ = this.ps.getPedidosPendente(user?.uid!)
     })
 
+    
+
   }
 
   enviarMsg(pedido: PedidosOnline) {

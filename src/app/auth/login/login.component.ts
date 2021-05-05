@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     }).catch(err=>{
       this.loading = false
       this.notify.notifications(err)
-      
     })
 
   }

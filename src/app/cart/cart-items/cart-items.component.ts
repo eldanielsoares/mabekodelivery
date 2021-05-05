@@ -38,7 +38,7 @@ export class CartItemsComponent implements OnInit {
     'pgt': ['', [Validators.required]],
     'delivery': ['true'],
     'endereco': [''],
-    'enderecoFixo': [''],
+    'enderecoFixo': ['', [Validators.required]],
     'troco': ['0'],
     'desconto': [''],
     'fone': ['', [Validators.required]],
@@ -111,6 +111,8 @@ export class CartItemsComponent implements OnInit {
 
     if (!this.url?.freteDinamico) {
       this.req = true
+    }else {
+      this.obs.controls['enderecoFixo'].setValue('fixo')
     }
 
 
@@ -331,11 +333,11 @@ export class CartItemsComponent implements OnInit {
     } else {
       //entrega = `${this.obs.controls['endereco'].value}`
       if (this.url?.freteDinamico) {
-        entrega = `Entregar em: *${this.obs.controls['endereco'].value} - ${this.obs.controls['complemento']}*`
+        entrega = `Entregar em: *${this.obs.controls['endereco'].value} - ${this.obs.controls['complemento'].value}*`
       } else {
 
         let fixo = this.obs.controls['enderecoFixo'].value
-        entrega = `Entregar em: *${fixo.split('- R$')[0]} -  ${this.obs.controls['complemento'].value}*`
+        entrega = `Entregar em: *${fixo.split('- R$')[0]} - ${this.obs.controls['complemento'].value}*`
       }
     }
 
@@ -354,7 +356,7 @@ export class CartItemsComponent implements OnInit {
       }
 
 
-      pedidos += `*${this.cart[p].quantidade}* x ${this.cart[p].pedido}- *R$${this.cart[p].preco.toFixed(2)}* ${selectionSabor[p]}\n Adicionais: ${selectionAdd[p]}`
+      pedidos += `*${this.cart[p].quantidade}* x ${this.cart[p].pedido}- *R$${this.cart[p].preco.toFixed(2)}* ${selectionSabor[p]}\n *Adicionais:* ${selectionAdd[p]}\n`
 
     }
 
@@ -371,7 +373,7 @@ export class CartItemsComponent implements OnInit {
       trocoTxt = `R$${trocoFinal.toFixed(2)}`
     }
 
-    let txtTaxa = `Taxa de entrega: R$${this.taxa}`
+    let txtTaxa = `*Taxa de entrega:* R$${this.taxa}`
     if (this.obs.controls['delivery'].value == 'true') {
       txtTotal = 'TOTAL:'
     } else {
@@ -388,7 +390,7 @@ export class CartItemsComponent implements OnInit {
       descTxt = "*Sem desconto*"
     }
 
-    info = `${this.url?.nome} - *PEDIDO FINALIZADO*\n*Cliente:* ${this.obs.controls['nome'].value}\n*Pedido:*\n${pedidos}\n*Forma de pagamento:* ${this.obs.controls['pgt'].value}\n${txtTaxa}\n*Desconto:* ${descTxt}\n*Troco:* ${trocoTxt}\n${entrega}\n*Observação:* ${this.obs.controls['observation'].value}\n\n*${txtTotal}* R$${this.total.toFixed(2)} ${taxaMsg}`
+    info = `${this.url?.nome} - *PEDIDO FINALIZADO*\n*Cliente:* ${this.obs.controls['nome'].value}\n*Pedido:*\n${pedidos} *Forma de pagamento:* ${this.obs.controls['pgt'].value}\n${txtTaxa}\n*Desconto:* ${descTxt}\n*Troco:* ${trocoTxt}\n${entrega}\n*Observação:* ${this.obs.controls['observation'].value}\n\n*${txtTotal}* R$${this.total.toFixed(2)} ${taxaMsg}`
 
 
 
@@ -409,7 +411,7 @@ export class CartItemsComponent implements OnInit {
     } else {
       //entrega = `${this.obs.controls['endereco'].value}`
       if (this.url?.freteDinamico) {
-        entrega = `${this.obs.controls['endereco'].value} - ${this.obs.controls['complemento']}`
+        entrega = `${this.obs.controls['endereco'].value} - ${this.obs.controls['complemento'].value}`
       } else {
 
         let fixo = this.obs.controls['enderecoFixo'].value

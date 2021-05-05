@@ -47,7 +47,7 @@
 
                <mat-form-field appearance="outline" *ngIf="entrega == 'true' && !url?.freteDinamico ">
                   <mat-label>Escolha o bairro</mat-label>
-                  <mat-select formControlName="enderecoFixo" (selectionChange)="setBairro($event)">
+                  <mat-select formControlName="enderecoFixo" (selectionChange)="setBairro($event)" [required]="req">
                      <mat-option *ngFor="let b of url?.enderecosFixos" [value]="b">
                         {{b}}
                      </mat-option>

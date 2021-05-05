@@ -21,7 +21,7 @@ export class PrintComponent implements OnInit {
 
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.print()
   }
 
@@ -40,8 +40,23 @@ export class PrintComponent implements OnInit {
         })
 
         pdf.addImage(contentDataUrl, 'PNG', 0, 0, imgWidth, imgHeight)
-        pdf.output('dataurlnewwindow')
-        this.router.navigateByUrl('/dashboard/meus-pedidos', {replaceUrl:true})
+        
+        this.router.navigateByUrl('/dashboard/meus-pedidos', { replaceUrl: true })
+        if (navigator.userAgent.match(/Android/i)
+          || navigator.userAgent.match(/webOS/i)
+          || navigator.userAgent.match(/iPhone/i)
+          || navigator.userAgent.match(/iPad/i)
+          || navigator.userAgent.match(/iPod/i)
+          || navigator.userAgent.match(/BlackBerry/i)
+          || navigator.userAgent.match(/Windows Phone/i)
+        ) {
+          pdf.save(`${Math.floor(Math.random() * 65536)}`)
+          
+        }
+        else {
+          pdf.output('dataurlnewwindow')
+         
+        }
       })
     }
   }

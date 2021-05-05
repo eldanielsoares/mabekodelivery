@@ -23,8 +23,9 @@ export class NotifyService {
 
   listen() {
     this.angularMessaging.messages
-      .subscribe((message : any) => {
+      .subscribe((message) => {
         console.log(message);
+        this.notifications('Seu pedido foi atualizado, vá até a aba "Meus pedidos" e veja o status do pedido')
       });
   }
 }

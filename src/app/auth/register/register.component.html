@@ -27,6 +27,16 @@
             </div>
 
 
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Categorias</mat-label>
+                <mat-select multiple formControlName="category" required>
+                    <mat-option *ngFor="let c of cat" [value]="c">
+                        {{c}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
             <!--<mat-form-field appearance="outline" class="address">
                 <mat-label>Cep</mat-label>
                 <input matInput formControlName="cep" placeholder="CEP" type="number" max="8" a required>

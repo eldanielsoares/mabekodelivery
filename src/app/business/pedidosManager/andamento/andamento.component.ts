@@ -27,7 +27,7 @@ export class AndamentoComponent implements OnInit {
   }
 
   enviarMsg(pedido: PedidosOnline) {
-    let celular = `55${pedido.telefoneVendedor}`
+    let celular = `55${pedido.telefoneCliente}`
     let info = `Olá, ${pedido.nomeCliente}, seu pedido ${pedido.pedido} está sendo preparado`
     let msg = window.encodeURIComponent(info)
     window.open(`https://api.whatsapp.com/send?phone=${celular}&text=${msg}`)

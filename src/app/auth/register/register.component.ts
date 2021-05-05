@@ -19,7 +19,8 @@ export class RegisterComponent implements OnInit {
     'email': ['', [Validators.required, Validators.email]],
     'senha': ['', [Validators.minLength(6), Validators.required]],
     'plano': ['true', [Validators.required]],
-    'endereco': ['', [Validators.required]]
+    'endereco': ['', [Validators.required]],
+    'category': ['', [Validators.required]]
   })
 
   estados = [
@@ -52,6 +53,7 @@ export class RegisterComponent implements OnInit {
     'Tocantins'
   ];
   loading = false
+  cat = ['Promoções','Burguer', 'Pizzas', 'Lanches', 'Batata frita', 'Hot Dog', 'Macarronada','Carnes', 'Combos', 'Frangos e aves', 'Bolos', 'Porções', 'Marmitex', 'Massas', 'Salgados', 'Doces', 'Veganos', 'Bebidas', 'Nordestina', 'Japonês', 'Churrasco', 'Outros']
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,
@@ -98,6 +100,7 @@ export class RegisterComponent implements OnInit {
           receberPorWhatsapp: plano,
           endereco: this.register.controls['endereco'].value,
           freteDinamico: true,
+          categorias: this.register.controls['category'].value,
         }
         if (userID?.uid != null) {
           this.authService.createAccount(userID?.uid, user).then(() => {
